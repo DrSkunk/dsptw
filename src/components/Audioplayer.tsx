@@ -2,15 +2,15 @@ import * as React from 'react';
 import { getEventStream, getBaseUrl } from '../api/localServer';
 import { GameEvent } from '../models/GameEvent';
 
-const thinkLoopAudio = new Audio('\\\\' + getBaseUrl() + '/static/sound/thinkLoop.mp3');
+const thinkLoopAudio = new Audio('//' + getBaseUrl() + '/static/sound/thinkLoop.mp3');
 thinkLoopAudio.loop = true;
 thinkLoopAudio.volume = .3;
-const stopClockAudio = new Audio('\\\\' + getBaseUrl() + '/static/sound/stopClock.mp3');
-const answerTimeoutAudio = new Audio('\\\\' + getBaseUrl() + '/static/sound/answerTimeout.mp3');
-const answerCorrectAudio = new Audio('\\\\' + getBaseUrl() + '/static/sound/answerCorrect.mp3');
-const bumperAudio = new Audio('\\\\' + getBaseUrl() + '/static/sound/bumper.mp3');
-const itHasHappenedAudio = new Audio('\\\\' + getBaseUrl() + '/static/sound/itHasHappened.mp3');
-const applauseAudio = new Audio('\\\\' + getBaseUrl() + '/static/sound/applause.mp3');
+const stopClockAudio = new Audio('//' + getBaseUrl() + '/static/sound/stopClock.mp3');
+const answerTimeoutAudio = new Audio('//' + getBaseUrl() + '/static/sound/answerTimeout.mp3');
+const answerCorrectAudio = new Audio('//' + getBaseUrl() + '/static/sound/answerCorrect.mp3');
+const bumperAudio = new Audio('//' + getBaseUrl() + '/static/sound/bumper.mp3');
+const itHasHappenedAudio = new Audio('//' + getBaseUrl() + '/static/sound/itHasHappened.mp3');
+const applauseAudio = new Audio('//' + getBaseUrl() + '/static/sound/applause.mp3');
 
 function stopAndPlayAudio(audio: HTMLAudioElement) {
     if (!audio.error) {

@@ -55,7 +55,7 @@ export default class CollectiefGeheugen extends React.Component<CollectiefGeheug
                 key={i}
                 videoId={i}
                 poster={`/imgs/${i + 1}.png`}
-                src={`\\\\${getBaseUrl()}/static/aflevering${this.props.episode}/collectiefgeheugen/${i + 1}.mp4`}
+                src={`//${getBaseUrl()}/static/aflevering${this.props.episode}/collectiefgeheugen/${i + 1}.mp4`}
                 onVideoEnd={() => this.onVideoEnd(i)}
                 hasPlayed={this.state.playerVideoIds.indexOf(i) !== -1}
             />

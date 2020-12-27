@@ -55,7 +55,7 @@ export default class OpenDeur extends React.Component<OpenDeurProps, OpenDeurCom
             <Video
                 key={i}
                 videoId={i}
-                src={`\\\\${getBaseUrl()}/static/aflevering${this.props.episode}/opendeur/${i + 1}.mp4`}
+                src={`//${getBaseUrl()}/static/aflevering${this.props.episode}/opendeur/${i + 1}.mp4`}
                 onVideoEnd={() => this.onVideoEnd(i)}
                 hasPlayed={this.state.playerVideoIds.indexOf(i) !== -1}
             />

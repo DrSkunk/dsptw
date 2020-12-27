@@ -30,7 +30,7 @@ export default class Galerij extends React.Component<GalerijProps, {}> {
         }
         return (
             <Wrapper>
-                {currentImageIndex !== -1 ? <Image height={550} src={`\\\\${getBaseUrl()}/static/aflevering${this.props.episode}/galerij/${currentQuestionSeriesIndex + 1}/${currentImageIndex + 1}.png`} /> : null}
+                {currentImageIndex !== -1 ? <Image height={550} src={`//${getBaseUrl()}/static/aflevering${this.props.episode}/galerij/${currentQuestionSeriesIndex + 1}/${currentImageIndex + 1}.png`} /> : null}
             </Wrapper>
         );
     }
