@@ -78,7 +78,7 @@ export default class PlayerView extends React.Component<PlayerViewProps, PlayerV
         }
 
         return (
-            <div>
+            <>
                 <AudioPlayer />
                 {this.state.showTitleCard ? <TitleCard roundName={roundName} /> : null}
                 <Jury show={jury.show} cameraLink={jury.cameraLink} name={jury.name} />
@@ -90,7 +90,7 @@ export default class PlayerView extends React.Component<PlayerViewProps, PlayerV
                     presenterCamera={presenter.cameraLink}
                 />
                 {round}
-            </div>
+            </>
         )
 
     }
