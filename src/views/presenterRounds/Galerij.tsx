@@ -13,7 +13,9 @@ const Answer = styled.li`
 `;
 
 const FoundAnswer = styled.li`
-  text-decoration: line-through;
+  color: #5d5e5e;
+  text-decoration: line-through
+    ${(props: { current: boolean }) => (props.current ? ` underline` : '')};
 `;
 
 export default class Galerij extends React.Component<GalerijProps, never> {
@@ -27,7 +29,11 @@ export default class Galerij extends React.Component<GalerijProps, never> {
     }
     const answers = questions[currentQuestionSeriesIndex].map((question, i) => {
       if (question.found) {
-        return <FoundAnswer>{question.answer}</FoundAnswer>;
+        return (
+          <FoundAnswer current={currentImageIndex === i}>
+            {question.answer}
+          </FoundAnswer>
+        );
       }
       return (
         <Answer
