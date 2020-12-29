@@ -24,7 +24,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build ; gh-pages -d build"
+    "deploy": "npm run build ; gh-pages -d build",
+    "lint": "eslint . --ext ts --ext tsx --fix",
+    "prettier-format": "prettier --config .prettierrc '**/*.{ts,tsx,json,md,html}' --write"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,6 +44,25 @@
     ]
   },
   "devDependencies": {
-    "tslint": "^6.1.2"
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "prettier": "2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,json,md,html}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   }
 }

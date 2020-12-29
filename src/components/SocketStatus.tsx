@@ -4,38 +4,41 @@ import { getConnectionStream } from '../api/localServer';
 import { ConnectionState } from '../models/ConnectionState';
 
 type AppState = {
-    connectionState: ConnectionState
-}
+  connectionState: ConnectionState;
+};
 
 const Connected = styled.div`
-    color: white;
-    background-color: green;
-`
+  color: white;
+  background-color: green;
+`;
 
 const NotConnected = styled.div`
-    color: white;
-    background-color: red;
-`
+  color: white;
+  background-color: red;
+`;
 
-export default class SocketStatus extends React.Component<{}, AppState> {
+export default class SocketStatus extends React.Component<never, AppState> {
+  state = {
+    connectionState: ConnectionState.Closed,
+  };
 
-    state = {
-        connectionState: ConnectionState.Closed
-    }
+  componentDidMount() {
+    // TODO fix the any type
+    getConnectionStream().subscribe((connectionState: any) => {
+      this.setState({ connectionState });
+    });
+  }
 
-    componentDidMount() {
-        // TODO fix the any type
-        getConnectionStream().subscribe((connectionState: any) => {
-            this.setState({ connectionState })
-        })
-    }
-
-    render() {
-        return (
-            <>
-                {this.state.connectionState === ConnectionState.Open && <Connected>Connected to server</Connected>}
-                {this.state.connectionState === ConnectionState.Closed && <NotConnected>No connection to server</NotConnected>}
-            </>
-        );
-    }
+  render() {
+    return (
+      <>
+        {this.state.connectionState === ConnectionState.Open && (
+          <Connected>Connected to server</Connected>
+        )}
+        {this.state.connectionState === ConnectionState.Closed && (
+          <NotConnected>No connection to server</NotConnected>
+        )}
+      </>
+    );
+  }
 }

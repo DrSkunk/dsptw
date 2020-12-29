@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Theme } from "../Theme";
+import styled from 'styled-components';
+import { Theme } from '../Theme';
 
 export const Time = styled.div`
   font-size: 70px;

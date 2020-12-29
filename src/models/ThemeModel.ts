@@ -1,5 +1,5 @@
 export type Theme = {
-    primary: string,
-    secondary: string,
-    accent: string,
-}
+  primary: string;
+  secondary: string;
+  accent: string;
+};

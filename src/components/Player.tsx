@@ -1,8 +1,8 @@
-import * as React from "react";
-import { PlayerState } from "../models/PlayerState";
-import { Time } from "./Time";
-import { Name } from "./Name";
-import { CameraLink } from "./CameraLink";
+import * as React from 'react';
+import { PlayerState } from '../models/PlayerState';
+import { Time } from './Time';
+import { Name } from './Name';
+import { CameraLink } from './CameraLink';
 
 type PlayerProps = {
   playerState: PlayerState;
@@ -10,7 +10,7 @@ type PlayerProps = {
   hideTime: boolean;
 };
 
-export default class Player extends React.Component<PlayerProps, {}> {
+export default class Player extends React.Component<PlayerProps, never> {
   render() {
     const { playerState, isCurrentPlayer, hideTime } = this.props;
     // TODO time running animation

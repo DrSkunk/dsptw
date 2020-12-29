@@ -1,3 +1,3 @@
 export enum ObsScene {
-    Lobby = 'Lobby',
+  Lobby = 'Lobby',
 }

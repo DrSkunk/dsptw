@@ -1,9 +1,9 @@
-import * as React from "react";
-import styled from "styled-components";
-import { PlayerState } from "../models/PlayerState";
-import Player from "./Player";
-import { CameraLink } from "./CameraLink";
-import { Name } from "./Name";
+import * as React from 'react';
+import styled from 'styled-components';
+import { PlayerState } from '../models/PlayerState';
+import Player from './Player';
+import { CameraLink } from './CameraLink';
+import { Name } from './Name';
 
 const Root = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ type PlayersProps = {
   presenterCamera: string;
 };
 
-export default class Players extends React.Component<PlayersProps, {}> {
+export default class Players extends React.Component<PlayersProps, never> {
   render() {
     const {
       currentPlayer,

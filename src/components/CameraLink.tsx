@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CameraLink = styled.iframe`
   width: 100%;

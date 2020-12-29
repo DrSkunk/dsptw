@@ -1,4 +1,4 @@
 export enum ViewType {
-    Videos = 'video',
-    Answers = 'answers',
+  Videos = 'video',
+  Answers = 'answers',
 }
