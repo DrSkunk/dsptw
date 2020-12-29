@@ -47,7 +47,7 @@ export default class Galerij extends React.Component<GalerijProps, never> {
     });
     return (
       <div>
-        Galerij
+        Galerij {currentQuestionSeriesIndex + 1}
         <button onClick={() => nextImage()}> Next image</button>
         <button onClick={() => nextQuestion()}> Next series</button>
         <ul>{answers}</ul>
