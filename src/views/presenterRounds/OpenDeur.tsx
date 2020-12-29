@@ -36,14 +36,20 @@ export default class OpenDeur extends React.Component<OpenDeurProps, never> {
         </PresenterAnswer>
       )
     );
+
+    const videoButtons = questions.map((_, i) => {
+      return (
+        <button key={i} onClick={() => playVideo(i)}>
+          Show video {i + 1}
+        </button>
+      );
+    });
     return (
       <div>
         OpenDeur
         <button onClick={() => showAllAnsers()}>Show All Answers</button>
         <button onClick={() => setView(ViewType.Videos)}>Show videos</button>
-        <button onClick={() => playVideo(0)}>Show video 1</button>
-        <button onClick={() => playVideo(1)}>Show video 2</button>
-        <button onClick={() => playVideo(2)}>Show video 3</button>
+        {videoButtons}
         <div>{questions[currentQuestionIndex].question}</div>
         <ul>{presenterAnswers}</ul>
       </div>
