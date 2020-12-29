@@ -40,7 +40,7 @@ export default class Puzzel extends React.Component<PuzzelProps, never> {
     }
     return (
       <div>
-        Puzzel
+        Puzzel {currentPuzzleIndex + 1}
         <button onClick={() => showAllAnsers()}>Show All Answers</button>
         <button onClick={() => nextQuestion()}>Next question</button>
         <ul>{presenterAnswers}</ul>
