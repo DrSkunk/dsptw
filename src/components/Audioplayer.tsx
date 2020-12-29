@@ -34,7 +34,8 @@ function stopAndPlayAudio(audio: HTMLAudioElement) {
 
 export default class AudioPlayer extends React.Component<never, never> {
   componentDidMount() {
-    getEventStream().subscribe((gameEvent: any) => {
+    getEventStream().subscribe((gameEventUpdate: GameEvent | unknown) => {
+      const gameEvent = gameEventUpdate as GameEvent;
       console.log(gameEvent);
       switch (gameEvent) {
         case GameEvent.StartTime:

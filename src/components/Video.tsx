@@ -33,7 +33,8 @@ export class Video extends React.Component<VideoProps, VideoState> {
   videoRef?: HTMLVideoElement;
 
   componentDidMount() {
-    getPlayVideoStream().subscribe((videoId: any) => {
+    getPlayVideoStream().subscribe((videoIdUpdate: number | unknown) => {
+      const videoId = videoIdUpdate as number;
       if (videoId === this.props.videoId) {
         this.start();
       }

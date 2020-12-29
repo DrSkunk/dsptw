@@ -67,7 +67,7 @@ export default class Puzzel extends React.Component<PuzzelProps, never> {
     }
     const { grid, answers } = puzzles[currentPuzzleIndex];
 
-    const gridComponent = grid.map((item, i) => (
+    const gridComponent = grid.map((item) => (
       <GridItem
         key={item.text + item.answerIndex}
         found={answers[item.answerIndex].found}

@@ -31,6 +31,7 @@ export default class Galerij extends React.Component<GalerijProps, never> {
       }
       return (
         <Answer
+          key={i}
           current={currentImageIndex === i}
           onClick={() => correctAnswer(i)}
         >

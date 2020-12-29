@@ -31,11 +31,11 @@ export function getBaseUrl() {
 
 export function openConnection() {
   socket = new WebSocket(`ws://${getBaseUrl()}`);
-  socket.addEventListener('open', (e) => {
+  socket.addEventListener('open', () => {
     console.log('opened connection');
     connection.next(ConnectionState.Open);
   });
-  socket.addEventListener('close', (event) => {
+  socket.addEventListener('close', () => {
     console.log('The connection was lost. Retrying in 1 second.');
     connection.next(ConnectionState.Closed);
     setTimeout(openConnection(), 1000);

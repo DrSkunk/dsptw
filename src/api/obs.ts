@@ -8,7 +8,7 @@ export function openConnection() {
   obs
     .connect({ address: 'localhost:4444' })
     .then(() => console.debug('Connected to OBS'))
-    .catch((error) => console.error("Couldn't connect to OBS"));
+    .catch(() => console.error("Couldn't connect to OBS"));
 }
 
 export function setScene(scene: RoundName | ObsScene) {
@@ -17,5 +17,5 @@ export function setScene(scene: RoundName | ObsScene) {
     .send('SetCurrentScene', {
       'scene-name': scene,
     })
-    .catch((error) => console.error("Couldn't send update to OBS"));
+    .catch(() => console.error("Couldn't send update to OBS"));
 }

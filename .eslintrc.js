@@ -1,15 +1,26 @@
 module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier'],
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   rules: {
-    'no-console': 1,
+    'no-console': 0,
     'prettier/prettier': 2,
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };

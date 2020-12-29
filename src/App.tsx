@@ -26,15 +26,15 @@ export default class Hello extends React.Component<never, AppState> {
     // TODO config for connection
     openConnection();
     // TODO fix type any to GameState
-    getGameStateUpdateStream().subscribe((gameState: any) => {
-      console.log('gameStateUpdate', gameState);
-      this.setState({
-        gameState,
-      });
-      // if (this.state.isPresenter) {
-      //   setScene(gameState.roundState.roundName)
-      // }
-    });
+    getGameStateUpdateStream().subscribe(
+      (gameStateUpdate: GameState | unknown) => {
+        const gameState = gameStateUpdate as GameState;
+        console.log('gameStateUpdate', gameState);
+        this.setState({
+          gameState,
+        });
+      }
+    );
   }
 
   render() {

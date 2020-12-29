@@ -37,12 +37,13 @@ export default class PlayerView extends React.Component<
   };
 
   componentDidMount() {
-    getEventStream().subscribe((gameEvent: any) => {
+    getEventStream().subscribe((gameEventUpdate: GameEvent | unknown) => {
+      const gameEvent = gameEventUpdate as GameEvent;
       console.log(gameEvent);
       switch (gameEvent) {
         case GameEvent.NextRound:
-          // this.setState({ showTitleCard: true });
-          // setTimeout(() => this.setState({ showTitleCard: false }), 5000);
+          this.setState({ showTitleCard: true });
+          setTimeout(() => this.setState({ showTitleCard: false }), 5000);
           break;
       }
     });

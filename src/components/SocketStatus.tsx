@@ -24,9 +24,12 @@ export default class SocketStatus extends React.Component<never, AppState> {
 
   componentDidMount() {
     // TODO fix the any type
-    getConnectionStream().subscribe((connectionState: any) => {
-      this.setState({ connectionState });
-    });
+    getConnectionStream().subscribe(
+      (connectionStateUpdate: ConnectionState | unknown) => {
+        const connectionState = connectionStateUpdate as ConnectionState;
+        this.setState({ connectionState });
+      }
+    );
   }
 
   render() {
