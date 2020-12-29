@@ -25,7 +25,7 @@ export default class CollectiefGeheugen extends React.Component<
     }
   };
   render() {
-    // TODO button to show answers that weren't found
+    // TODO correct coloring for missing answers
     const { currentQuestionIndex, questions } = this.props.roundState;
     const presenterAnswers = questions[currentQuestionIndex].answers.map(
       (answer, i) => (
@@ -38,14 +38,20 @@ export default class CollectiefGeheugen extends React.Component<
         </PresenterAnswer>
       )
     );
+
+    const videoButtons = questions.map((_, i) => {
+      return (
+        <button key={i} onClick={() => playVideo(i)}>
+          Show video {i + 1}
+        </button>
+      );
+    });
     return (
       <div>
         Collectief Geheugen
         <button onClick={() => showAllAnsers()}>Show All Answers</button>
         <button onClick={() => setView(ViewType.Videos)}>Show videos</button>
-        <button onClick={() => playVideo(0)}>Show video 1</button>
-        <button onClick={() => playVideo(1)}>Show video 2</button>
-        <button onClick={() => playVideo(2)}>Show video 3</button>
+        {videoButtons}
         <ul>{presenterAnswers}</ul>
       </div>
     );

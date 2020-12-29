@@ -60,7 +60,7 @@ export default class CollectiefGeheugen extends React.Component<
       <Video
         key={i}
         videoId={i}
-        poster={`/imgs/${i + 1}.png`}
+        poster={`/imgs/play.png`}
         src={`//${getBaseUrl()}/static/aflevering${
           this.props.episode
         }/collectiefgeheugen/${i + 1}.mp4`}
