@@ -50,9 +50,9 @@ export default class Presenter extends React.Component<
   PresenterState
 > {
   state = {
-    playerNames: ['', '', ''],
-    playerTimes: [60000, 60000, 60000],
-    playerCameraLinks: ['', '', ''],
+    playerNames: [],
+    playerTimes: [],
+    playerCameraLinks: [],
     showEditor: false,
   };
 
@@ -148,7 +148,7 @@ export default class Presenter extends React.Component<
             : {}
         }
       >
-        {player.name} - {Math.ceil(player.time / 1000)}
+        {player.name} - {Math.ceil(player.time / 1000)} - {player.time}
       </li>
     ));
 
