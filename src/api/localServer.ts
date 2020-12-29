@@ -38,7 +38,7 @@ export function openConnection() {
   socket.addEventListener('close', () => {
     console.log('The connection was lost. Retrying in 1 second.');
     connection.next(ConnectionState.Closed);
-    setTimeout(openConnection(), 1000);
+    setTimeout(openConnection, 1000);
   });
   socket.addEventListener('message', (e) => {
     try {

@@ -17,7 +17,7 @@ const NotConnected = styled.div`
   background-color: red;
 `;
 
-export default class SocketStatus extends React.Component<never, AppState> {
+export default class SocketStatus extends React.Component<unknown, AppState> {
   state = {
     connectionState: ConnectionState.Closed,
   };

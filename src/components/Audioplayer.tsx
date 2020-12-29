@@ -32,7 +32,7 @@ function stopAndPlayAudio(audio: HTMLAudioElement) {
   }
 }
 
-export default class AudioPlayer extends React.Component<never, never> {
+export default class AudioPlayer extends React.Component<unknown, never> {
   componentDidMount() {
     getEventStream().subscribe((gameEventUpdate: GameEvent | unknown) => {
       const gameEvent = gameEventUpdate as GameEvent;
