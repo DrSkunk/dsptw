@@ -42,8 +42,8 @@ export default class PlayerView extends React.Component<
       console.log(gameEvent);
       switch (gameEvent) {
         case GameEvent.NextRound:
-          this.setState({ showTitleCard: true });
-          setTimeout(() => this.setState({ showTitleCard: false }), 5000);
+          // this.setState({ showTitleCard: true });
+          // setTimeout(() => this.setState({ showTitleCard: false }), 5000);
           break;
       }
     });
