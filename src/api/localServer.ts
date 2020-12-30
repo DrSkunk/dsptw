@@ -105,6 +105,9 @@ export function previousRound() {
 export function nextRound() {
   sendCommand(SocketCommand.NextRound);
 }
+export function nextFinale() {
+  sendCommand(SocketCommand.NextFinale);
+}
 export function nextStartingPlayer() {
   sendCommand(SocketCommand.NextStartingPlayer);
 }

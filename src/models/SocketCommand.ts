@@ -9,6 +9,7 @@ export enum SocketCommand {
   SetView = 'setView',
   PreviousRound = 'previousRound',
   NextRound = 'nextRound',
+  NextFinale = 'nextFinale',
   NextStartingPlayer = 'nextStartingPlayer',
   NextPlayerToComplete = 'nextPlayerToComplete',
   SetPlayerName = 'setPlayerName',

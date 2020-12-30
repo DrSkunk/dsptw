@@ -4,6 +4,7 @@ import {
   correctAnswer,
   showAllAnsers,
   nextQuestion,
+  nextFinale,
 } from '../../api/localServer';
 import { PresenterAnswer } from '../../components/PresenterAnswer';
 
@@ -38,6 +39,7 @@ export default class Finale extends React.Component<FinaleProps, never> {
         <div>{questions[currentQuestionIndex].question}</div>
         <button onClick={showAllAnsers}>show answers</button>
         <button onClick={nextQuestion}>next question</button>
+        <button onClick={nextFinale}>next Finale</button>
         <ul>{presenterAnswers}</ul>
       </div>
     );
