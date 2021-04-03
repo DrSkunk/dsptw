@@ -19,4 +19,8 @@ export enum SocketCommand {
   HideJury = 'hideJury',
   PlayVideo = 'playVideo',
   playApplause = 'playApplause',
+  StartIntroLoop = 'startIntroLoop',
+  StopIntroLoop = 'stopIntroLoop',
+  PlayOpening = 'playOpening',
+  FocusPlayer = 'focusPlayer',
 }

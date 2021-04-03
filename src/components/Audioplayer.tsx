@@ -23,13 +23,35 @@ const itHasHappenedAudio = new Audio(
 const applauseAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/applause.mp3'
 );
+const introLoopAudio = new Audio(
+  '//' + getBaseUrl() + '/static/sound/introLoop.mp3'
+);
+introLoopAudio.loop = true;
+introLoopAudio.volume = 0.6;
+const openingAudio = new Audio(
+  '//' + getBaseUrl() + '/static/sound/opening.mp3'
+);
 
-function stopAndPlayAudio(audio: HTMLAudioElement) {
+async function stopAndPlayAudio(audio: HTMLAudioElement) {
   if (!audio.error) {
-    audio.pause();
+    await audio.pause();
     audio.currentTime = 0;
-    audio.play();
+    await audio.play();
   }
+}
+
+function fadeOut(sound: HTMLAudioElement) {
+  const initialVolume = sound.volume;
+  const intervalId = setInterval(function () {
+    if (sound.volume - 0.1 >= 0) {
+      sound.volume -= 0.1;
+    } else {
+      sound.pause();
+      introLoopAudio.currentTime = 0;
+      introLoopAudio.volume = initialVolume;
+      clearInterval(intervalId);
+    }
+  }, 50);
 }
 
 export default class AudioPlayer extends React.Component<unknown, never> {
@@ -61,6 +83,17 @@ export default class AudioPlayer extends React.Component<unknown, never> {
           break;
         case GameEvent.Applause:
           stopAndPlayAudio(applauseAudio);
+          break;
+        case GameEvent.StartIntroLoop:
+          stopAndPlayAudio(introLoopAudio);
+          break;
+        case GameEvent.StopIntroLoop:
+          fadeOut(introLoopAudio);
+          // introLoopAudio.pause();
+          // introLoopAudio.currentTime = 0;
+          break;
+        case GameEvent.Opening:
+          stopAndPlayAudio(openingAudio);
           break;
       }
     });

@@ -3,6 +3,7 @@ import { PlayerState } from '../models/PlayerState';
 import { Time } from './Time';
 import { Name } from './Name';
 import { CameraLink } from './CameraLink';
+import styled from 'styled-components';
 
 type PlayerProps = {
   playerState: PlayerState;
@@ -10,14 +11,21 @@ type PlayerProps = {
   hideTime: boolean;
 };
 
+const Root = styled.div`
+  flex-grow: 1;
+`;
+
 export default class Player extends React.Component<PlayerProps, never> {
   render() {
     const { playerState, isCurrentPlayer, hideTime } = this.props;
     // TODO time running animation
     return (
-      <div>
+      <Root>
         {playerState.cameraLink ? (
-          <CameraLink src={playerState.cameraLink} />
+          <CameraLink
+            src={playerState.cameraLink}
+            focused={playerState.focused}
+          />
         ) : (
           <CameraLink />
         )}
@@ -27,7 +35,7 @@ export default class Player extends React.Component<PlayerProps, never> {
             {Math.ceil(playerState.time / 1000)}
           </Time>
         )}
-      </div>
+      </Root>
     );
   }
 }

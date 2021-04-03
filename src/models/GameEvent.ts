@@ -7,4 +7,7 @@ export enum GameEvent {
   PlayVideo = 'playVideo',
   ItHasHappened = 'itHasHappened',
   Applause = 'applause',
+  StartIntroLoop = 'startIntroLoop',
+  StopIntroLoop = 'stopIntroLoop',
+  Opening = 'opening',
 }

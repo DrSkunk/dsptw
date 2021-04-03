@@ -13,6 +13,10 @@ import {
   showJury,
   hideJury,
   playApplause,
+  startIntroLoop,
+  stopIntroLoop,
+  playOpening,
+  focusPlayer,
 } from '../api/localServer';
 import { GameState } from '../models/GameState';
 import { DrieZesNegenState } from '../models/Rounds/DrieZesNegenState';
@@ -211,6 +215,12 @@ export default class Presenter extends React.Component<
         break;
     }
 
+    const cameraFocusButtons = players.map((player, i) => (
+      <button key={'cameraFocus' + i} onClick={() => focusPlayer(i)}>
+        {player.name}
+      </button>
+    ));
+
     return (
       <Wrapper>
         <SocketStatus />
@@ -234,6 +244,14 @@ export default class Presenter extends React.Component<
           <button onClick={() => showJury()}>Show jury</button>
           <button onClick={() => hideJury()}>Hide jury</button>
           <button onClick={() => playApplause()}>Applause</button>
+          <button onClick={() => startIntroLoop()}>Play Intro Loop</button>
+          <button onClick={() => stopIntroLoop()}>Stop Intro Loop</button>
+          <button onClick={() => playOpening()}>Play Opening</button>
+        </div>
+        <div>
+          Focus:
+          <button onClick={() => focusPlayer(-1)}>unfocus</button>
+          {cameraFocusButtons}
         </div>
         <div>
           <button onClick={() => nextStartingPlayer()}>

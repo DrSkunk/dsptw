@@ -28,6 +28,8 @@ type PlayerViewState = {
   showTitleCard: boolean;
 };
 
+const openingDuration = 8;
+
 export default class PlayerView extends React.Component<
   PlayerViewProps,
   PlayerViewState
@@ -44,6 +46,13 @@ export default class PlayerView extends React.Component<
         case GameEvent.NextRound:
           this.setState({ showTitleCard: true });
           setTimeout(() => this.setState({ showTitleCard: false }), 5000);
+          break;
+        case GameEvent.Opening:
+          this.setState({ showTitleCard: true });
+          setTimeout(
+            () => this.setState({ showTitleCard: false }),
+            openingDuration * 1000
+          );
           break;
       }
     });
@@ -69,7 +78,11 @@ export default class PlayerView extends React.Component<
     );
 
     let round = null;
+    let title = roundName.toString();
     switch (roundName) {
+      case RoundName.Overzicht:
+        title = 'De Slimste Mens ter wereld';
+        break;
       case RoundName.DrieZesNegen:
         round = <DrieZesNegen roundState={roundState as DrieZesNegenState} />;
         break;
@@ -117,7 +130,9 @@ export default class PlayerView extends React.Component<
     return (
       <>
         <AudioPlayer />
-        {this.state.showTitleCard ? <TitleCard roundName={roundName} /> : null}
+        {this.state.showTitleCard ? (
+          <TitleCard roundName={title} duration={openingDuration} />
+        ) : null}
         <Jury show={jury.show} cameraLink={jury.cameraLink} name={jury.name} />
         <Players
           players={players}

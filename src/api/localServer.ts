@@ -138,6 +138,18 @@ export function playVideo(videoIndex: number) {
 export function playApplause() {
   sendCommand(SocketCommand.playApplause);
 }
+export function startIntroLoop() {
+  sendCommand(SocketCommand.StartIntroLoop);
+}
+export function stopIntroLoop() {
+  sendCommand(SocketCommand.StopIntroLoop);
+}
+export function playOpening() {
+  sendCommand(SocketCommand.PlayOpening);
+}
+export function focusPlayer(playerIndex: number) {
+  sendCommand(SocketCommand.FocusPlayer, { playerIndex });
+}
 
 function sendCommand(command: string, extraData = {}) {
   socket.send(JSON.stringify({ command, ...extraData }));

@@ -10,6 +10,7 @@ const Videos = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 70px;
+  max-height: 19vh;
 `;
 
 const AnswersWrapper = styled.div`
@@ -63,13 +64,18 @@ export default class OpenDeur extends React.Component<
         videoId={i}
         src={`//${getBaseUrl()}/static/aflevering${
           this.props.episode
-        }/opendeur/${i + 1}.mp4`}
+        }/opendeur/${i + 1}.webm`}
         onVideoEnd={() => this.onVideoEnd(i)}
         hasPlayed={this.state.playerVideoIds.indexOf(i) !== -1}
       />
     ));
     if (currentView === ViewType.Videos) {
-      return <Videos>{videos}</Videos>;
+      return (
+        <>
+          <Videos>{videos.slice(0, 3)}</Videos>
+          <Videos>{videos.slice(3, 6)}</Videos>
+        </>
+      );
     }
     const answers = questions[currentQuestionIndex].answers.map((answer, i) => (
       <Answer

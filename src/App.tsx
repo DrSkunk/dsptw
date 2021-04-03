@@ -25,7 +25,6 @@ export default class Hello extends React.Component<unknown, AppState> {
   componentDidMount() {
     // TODO config for connection
     openConnection();
-    // TODO fix type any to GameState
     getGameStateUpdateStream().subscribe(
       (gameStateUpdate: GameState | unknown) => {
         const gameState = gameStateUpdate as GameState;

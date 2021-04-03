@@ -23,7 +23,7 @@ const Root = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation-duration: 5s;
+  animation-duration: ${(props: { duration: number }) => props.duration + 1}s;
   animation-name: ${visibility};
 `;
 
@@ -41,7 +41,7 @@ const RoundName = styled.div`
   text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.5);
   text-shadow: 0px 10px 1px rgba(38, 88, 133, 1);
   animation-name: ${breatheAnimation};
-  animation-duration: 6s;
+  animation-duration: ${(props: { duration: number }) => props.duration + 1}s;
   background: radial-gradient(
     circle,
     rgba(202, 61, 54, 1) 0%,
@@ -55,13 +55,15 @@ const RoundName = styled.div`
 
 type TitleCardProps = {
   roundName: string;
+  duration?: number;
 };
 
 export default class TitleCard extends React.Component<TitleCardProps, never> {
   render() {
+    const duration = this.props.duration ? this.props.duration : 5;
     return (
-      <Root>
-        <RoundName>{this.props.roundName}</RoundName>
+      <Root duration={duration}>
+        <RoundName duration={duration}>{this.props.roundName}</RoundName>
       </Root>
     );
   }

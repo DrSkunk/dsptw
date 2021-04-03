@@ -12,6 +12,10 @@ const Root = styled.div`
   width: 100vw;
 `;
 
+const Presenter = styled.div`
+  flex-grow: 1;
+`;
+
 type PlayersProps = {
   players: PlayerState[];
   currentPlayers: number[];
@@ -38,14 +42,15 @@ export default class Players extends React.Component<PlayersProps, never> {
         hideTime={false}
       />
     ));
+    console.log(currentPlayer, currentPlayers);
     // TODO add presenter info in config and gamestate
     return (
       <Root>
         {playersComponent}
-        <div>
+        <Presenter>
           <CameraLink src={presenterCamera} />
           <Name>{presenterName}</Name>
-        </div>
+        </Presenter>
       </Root>
     );
   }

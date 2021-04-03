@@ -23,7 +23,7 @@ const VideoElement = styled.video`
       ? 'position: absolute; top:0; left:0; width: 100vw; height:100vh; background:black; z-index:10;'
       : 'width: 0; flex-grow: 1;'};
 `;
-
+// TODO multiple rows for videos
 export class Video extends React.Component<VideoProps, VideoState> {
   state = {
     isPlaying: false,
