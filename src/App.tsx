@@ -12,7 +12,7 @@ type AppState = {
   gameState?: GameState;
 };
 
-export default class Hello extends React.Component<unknown, AppState> {
+export default class App extends React.Component<unknown, AppState> {
   constructor(props: unknown) {
     super(props);
     const presenter = new URL(window.location.toString()).searchParams.get(

@@ -17,6 +17,7 @@ import {
   stopIntroLoop,
   playOpening,
   focusPlayer,
+  setPauseTargetTime,
 } from '../api/localServer';
 import { GameState } from '../models/GameState';
 import { DrieZesNegenState } from '../models/Rounds/DrieZesNegenState';
@@ -33,6 +34,7 @@ import Galerij from './presenterRounds/Galerij';
 import CollectiefGeheugen from './presenterRounds/CollectiefGeheugen';
 import Finale from './presenterRounds/Finale';
 import SocketStatus from '../components/SocketStatus';
+import HotKeys from '../components/HotKeys';
 
 const Wrapper = styled.div`
   font-size: 2em;
@@ -47,6 +49,7 @@ type PresenterState = {
   playerTimes: number[];
   playerCameraLinks: string[];
   showEditor: boolean;
+  pauzeTargetTime: string;
 };
 
 export default class Presenter extends React.Component<
@@ -58,28 +61,29 @@ export default class Presenter extends React.Component<
     playerTimes: [],
     playerCameraLinks: [],
     showEditor: false,
+    pauzeTargetTime: '',
   };
 
   // _handleKeyDown = (event: any) => {
-  //     console.log(event)
-  //     switch (event.keyCode) {
-  //         // top number row: 1
-  //         case 49:
-  //             startTime();
-  //             break;
-  //         // top number row: 2
-  //         case 50:
-  //             stopTime();
-  //             break;
-  //     }
-  // }
+  //   console.log(event);
+  //   switch (event.keyCode) {
+  //     // top number row: 1
+  //     case 49:
+  //       startTime();
+  //       break;
+  //     // top number row: 2
+  //     case 50:
+  //       stopTime();
+  //       break;
+  //   }
+  // };
 
   // componentDidMount() {
-  //     document.addEventListener("keydown", this._handleKeyDown);
+  // document.addEventListener('keydown', this._handleKeyDown);
   // }
 
   // componentWillUnmount() {
-  //     document.removeEventListener("keydown", this._handleKeyDown);
+  // document.removeEventListener('keydown', this._handleKeyDown);
   // }
 
   toggleTimer = () => {
@@ -127,6 +131,12 @@ export default class Presenter extends React.Component<
 
   setCameraLink = (index: number) => {
     setPlayerCameraLink(index, this.state.playerCameraLinks[index]);
+  };
+
+  setPauzeTargetTime = (e: any) => {
+    this.setState({
+      pauzeTargetTime: e.target.value,
+    });
   };
 
   render() {
@@ -223,6 +233,7 @@ export default class Presenter extends React.Component<
 
     return (
       <Wrapper>
+        <HotKeys />
         <SocketStatus />
         <h1>{roundName}</h1>
         <ul>{playersComponent}</ul>
@@ -235,15 +246,32 @@ export default class Presenter extends React.Component<
         >
           Toggle editor
         </button>
-        {this.state.showEditor ? <ul>{editor}</ul> : null}
+        {this.state.showEditor ? (
+          <>
+            <ul>{editor}</ul>
+            <div>
+              Pauze Target Time:{' '}
+              <input
+                type="time"
+                onChange={this.setPauzeTargetTime}
+                value={this.state.pauzeTargetTime}
+              ></input>
+              <button
+                onClick={() => setPauseTargetTime(this.state.pauzeTargetTime)}
+              >
+                Set pauze time
+              </button>
+            </div>
+          </>
+        ) : null}
         <div>Timer is running: {timerIsRunning.toString()}</div>
         <button onClick={this.toggleTimer}>
-          {timerIsRunning ? 'Stop timer' : 'Start timer'}
+          {timerIsRunning ? 'Stop timer (+)' : 'Start timer (-)'}
         </button>
         <div>
-          <button onClick={() => showJury()}>Show jury</button>
-          <button onClick={() => hideJury()}>Hide jury</button>
-          <button onClick={() => playApplause()}>Applause</button>
+          <button onClick={() => showJury()}>Show jury (F8)</button>
+          <button onClick={() => hideJury()}>Hide jury (F8)</button>
+          <button onClick={() => playApplause()}>Applause (F9)</button>
           <button onClick={() => startIntroLoop()}>Play Intro Loop</button>
           <button onClick={() => stopIntroLoop()}>Stop Intro Loop</button>
           <button onClick={() => playOpening()}>Play Opening</button>

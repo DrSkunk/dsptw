@@ -132,6 +132,9 @@ export function showJury() {
 export function hideJury() {
   sendCommand(SocketCommand.HideJury);
 }
+export function toggleJury() {
+  sendCommand(SocketCommand.ToggleJury);
+}
 export function playVideo(videoIndex: number) {
   sendCommand(SocketCommand.PlayVideo, { videoIndex });
 }
@@ -149,6 +152,9 @@ export function playOpening() {
 }
 export function focusPlayer(playerIndex: number) {
   sendCommand(SocketCommand.FocusPlayer, { playerIndex });
+}
+export function setPauseTargetTime(targetTime: string) {
+  sendCommand(SocketCommand.SetPauseTargetTime, { targetTime });
 }
 
 function sendCommand(command: string, extraData = {}) {

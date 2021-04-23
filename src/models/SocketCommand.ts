@@ -17,10 +17,12 @@ export enum SocketCommand {
   SetPlayerCameraLink = 'setPlayerCameraLink',
   ShowJury = 'showJury',
   HideJury = 'hideJury',
+  ToggleJury = 'toggleJury',
   PlayVideo = 'playVideo',
   playApplause = 'playApplause',
   StartIntroLoop = 'startIntroLoop',
   StopIntroLoop = 'stopIntroLoop',
   PlayOpening = 'playOpening',
   FocusPlayer = 'focusPlayer',
+  SetPauseTargetTime = 'SetPauseTargetTime',
 }

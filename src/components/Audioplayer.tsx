@@ -6,20 +6,23 @@ const thinkLoopAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/thinkLoop.mp3'
 );
 thinkLoopAudio.loop = true;
-thinkLoopAudio.volume = 0.3;
+thinkLoopAudio.volume = 0.15;
 const stopClockAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/stopClock.mp3'
 );
+stopClockAudio.volume = 0.6;
 const answerTimeoutAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/answerTimeout.mp3'
 );
 const answerCorrectAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/answerCorrect.mp3'
 );
+answerCorrectAudio.volume = 0.5;
 const bumperAudio = new Audio('//' + getBaseUrl() + '/static/sound/bumper.mp3');
 const itHasHappenedAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/itHasHappened.mp3'
 );
+itHasHappenedAudio.volume = 1;
 const applauseAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/applause.mp3'
 );
@@ -27,10 +30,11 @@ const introLoopAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/introLoop.mp3'
 );
 introLoopAudio.loop = true;
-introLoopAudio.volume = 0.6;
+introLoopAudio.volume = 0.1;
 const openingAudio = new Audio(
   '//' + getBaseUrl() + '/static/sound/opening.mp3'
 );
+openingAudio.volume = 0.35;
 
 async function stopAndPlayAudio(audio: HTMLAudioElement) {
   if (!audio.error) {

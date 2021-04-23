@@ -38,7 +38,7 @@ export default class Galerij extends React.Component<GalerijProps, never> {
               this.props.episode
             }/galerij/${currentQuestionSeriesIndex + 1}/${
               currentImageIndex + 1
-            }.png`}
+            }.jpg`}
           />
         ) : null}
       </Wrapper>

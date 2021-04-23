@@ -6,4 +6,5 @@ export enum RoundName {
   CollectiefGeheugen = 'Collectief Geheugen',
   Finale = 'Finale',
   Overzicht = 'Overzicht',
+  Pauze = 'Pauze',
 }

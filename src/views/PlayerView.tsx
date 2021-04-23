@@ -19,6 +19,9 @@ import Jury from '../components/Jury';
 import AudioPlayer from '../components/Audioplayer';
 import { getEventStream } from '../api/localServer';
 import { GameEvent } from '../models/GameEvent';
+import Pauze from './playerRounds/Pauze';
+import { PauzeState } from '../models/Rounds/PauzeState';
+import styled from 'styled-components';
 
 type PlayerViewProps = {
   gameState?: GameState;
@@ -29,6 +32,10 @@ type PlayerViewState = {
 };
 
 const openingDuration = 8;
+
+const Root = styled.div`
+  overflow: hidden;
+`;
 
 export default class PlayerView extends React.Component<
   PlayerViewProps,
@@ -81,7 +88,11 @@ export default class PlayerView extends React.Component<
     let title = roundName.toString();
     switch (roundName) {
       case RoundName.Overzicht:
-        title = 'De Slimste Mens ter wereld';
+        title = 'De Slimste Nerd ter wereld';
+        break;
+      case RoundName.Pauze:
+        title = 'De Slimste Nerd ter wereld';
+        round = <Pauze roundState={roundState as PauzeState} />;
         break;
       case RoundName.DrieZesNegen:
         round = <DrieZesNegen roundState={roundState as DrieZesNegenState} />;
@@ -127,12 +138,8 @@ export default class PlayerView extends React.Component<
         break;
     }
 
-    return (
+    const playerView = (
       <>
-        <AudioPlayer />
-        {this.state.showTitleCard ? (
-          <TitleCard roundName={title} duration={openingDuration} />
-        ) : null}
         <Jury show={jury.show} cameraLink={jury.cameraLink} name={jury.name} />
         <Players
           players={players}
@@ -141,8 +148,18 @@ export default class PlayerView extends React.Component<
           presenterName={presenter.name}
           presenterCamera={presenter.cameraLink}
         />
-        {round}
       </>
+    );
+
+    return (
+      <Root>
+        <AudioPlayer />
+        {this.state.showTitleCard ? (
+          <TitleCard roundName={title} duration={openingDuration} />
+        ) : null}
+        {roundName === RoundName.Pauze ? null : playerView}
+        {round}
+      </Root>
     );
   }
 }
